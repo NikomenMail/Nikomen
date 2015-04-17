@@ -3,7 +3,9 @@
 import loremipsum
 
 class EmailGenerator:
+    """This class generates emails to test the Email Client"""
     def __init__(self, senderAddress, recipientAddresses, **kwargs):
+        """This method intializes an email generator class"""
         #Initialize Lists for instance
         self.recipientAddresses = []
         self.ccAddresses = []
@@ -23,22 +25,25 @@ class EmailGenerator:
         #Get the Message
         if ('message' in kwargs):
             self.message = kwargs['message']
-    #Generate Message
+
     def generateMessage(self, **kwargs):
+        """This method generates a lorem ipsum message of a specified size"""
         numParagraphs = kwargs['paragraph']
         if (numParagraphs < 1):
             print 'Warning! Number of paragraphs must be over than 0. Defaulting to 1...'
             numParagraphs = 1
         self.message = loremipsum.get_paragraphs(numParagraphs)
     
-    #Debug print method
-    def printEmail(self):
+    def printEmail(self):a
+        """For debugging purposes, this method prints a generator's attributes to standard out"""
         print "Sender:", self.senderAddress
         print "Recipients:", self.recipientAddresses
         print "cc:", self.ccAddresses
         print "bcc:", self.bccAddresses
         print "message:", self.message
+
     def emailToFile(self, filename):
+        """This method prints a generated email to a file for unit comparison"""
         path = './emailTests/' + filename
         out = open(path, "w")
         out.write('===SENDER ADDRESS===\n')
@@ -55,6 +60,7 @@ class EmailGenerator:
         out.write('===MESSAGES===\n')
         for message in self.message:
             out.write(message)
+
     #Define Setters/Getters/Removers
     def setSender(self, senderAddress):
         self.senderAddress = senderAddress
