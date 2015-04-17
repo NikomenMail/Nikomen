@@ -23,7 +23,6 @@ class EmailGenerator:
         #Get the Message
         if ('message' in kwargs):
             self.message = kwargs['message']
-
     #Generate Message
     def generateMessage(self, **kwargs):
         numParagraphs = kwargs['paragraph']
