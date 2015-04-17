@@ -1,0 +1,46 @@
+body
+{
+ 	width: auto;
+	background-color: red;
+}
+
+footer
+{
+	background:blue;
+	width:80%;
+	height:100px;
+	margin: 0% 10% 0% 10%;
+}
+
+.TextSpan
+{
+	background-color: purple;
+	width:80%;
+	margin: 0% 10% 0% 10%;
+	min-height: 500px ;
+
+}
+
+#LogoSpan
+{
+	background-color: blue;
+	width:80%;
+	margin: 2% 10% 0% 10%;
+	height: 175px;
+}
+
+#InfoBox
+{
+	background-color: white;
+	width: 60%;
+	min-height: inherit;
+	float: left;
+}
+
+#Login
+{
+	background-color: purple;
+	width: 40%;
+	min-height: inherit;
+	float: right;
+}
