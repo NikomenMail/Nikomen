@@ -39,6 +39,23 @@ class EmailGenerator:
         print "cc:", self.ccAddresses
         print "bcc:", self.bccAddresses
         print "message:", self.message
+    def emailToFile(self, filename):
+        path = './emailTests/' + filename
+        out = open(path, "w")
+        out.write('===SENDER ADDRESS===')
+        out.write(self.senderAddress)
+        out.write('===RECIPIENT ADDRESSES===')
+        for recipient in self.recipientAddresses:
+            out.write(recipient)
+        out.write('===CC ADDRESSES===')
+        for cc in self.ccAddresses:
+            out.write(cc)
+        out.write('===BCC ADDRESSES===')
+        for bcc in self.bccAddresses:
+            out.write(bcc)
+        out.write('===MESSAGES===')
+        for message in self.message:
+            out.write(message)
     #Define Setters/Getters/Removers
     def setSender(self, senderAddress):
         self.senderAddress = senderAddress

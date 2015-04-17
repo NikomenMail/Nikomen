@@ -7,3 +7,5 @@ generator.printEmail()
 
 generator.generateMessage(paragraph=10)
 generator.printEmail()
+
+generator.emailToFile('test')
