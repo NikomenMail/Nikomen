@@ -2,6 +2,11 @@
 To change this template use Tools | Templates.
 -->
 <!DOCTYPE html>
+<style>
+a:link {color:#CC0000}
+a:hover {color:#990099}
+</style>
+
 <html>
 <head>
     <title>Nikomen Home</title>
@@ -11,23 +16,36 @@ To change this template use Tools | Templates.
 </head>
 <body>
         <div id='LogoSpan'>
-            
+            <img src="nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" style="width:100%;height:175px">
         </div>
+	<br>
         <div class='TextSpan'>
             <div id='InfoBox'>
-                
+            
+                <!--Insert the company bio here -->
            
             </div>
             <div id='Login'>
-                
-                
-            </div>
+		    <br><br><a href="create.html"><img src="createButton.jpg" alt="Create New" style="Width:480px;height:150px"></a><br><br><br>
+		
+            <form action="login_function">  <!--Create login-handling logic function -->
             
+ 		        <h1>LOGIN</h1><br>
+		        Username:<input type="text" name="username">
+		        <br>
+		        Password: <input type="password" name="password">
+		        <br>
+		        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		        <input type="submit" value="Login"> &nbsp <a href="forgot_login.html">Forgot Password? </a>
+		    </form>
+            </div>
+	                
         </div>
         
 
 
 </body>
+<br>
 	<footer>
 	
 	</footer>
