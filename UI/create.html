@@ -1,0 +1,77 @@
+<!-- Security Questions need to be replaced, captcha to be added to lowerleft corner above create.  
+
+Create servlet to upload pic. should display choice  Get div's input_pic and input_info on same vertical 
+
+level. accept_info() to be created -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Nikomen Create Account</title>
+		<link rel="stylesheet" 
+
+href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="design.css">
+</head>
+
+<body>
+
+        <div id='LogoSpan'>
+            <img src="nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" 
+
+style="width:100%;height:175px">
+        </div><br>
+
+	
+	<h1><center>CREATE ACCOUNT</center></h1>
+
+	<div id='input_pic' style="float:left;background-color:white;margin: 0% 10% 0% 10%;width:40%">
+	<br><br><center>
+	<form action="upload_pic.jsp">
+	  <input type="file" name="prof_pic" accept="image/*">
+	  <input type="submit" value="save">
+	</form></center>
+	<br><br><br><br>
+
+	<!-- Captcha goes here -->
+	
+	<br><br><br><br><br><br>
+	<button onclick="accept_info()"> CREATE ACCOUNT</button>
+	</div>
+
+
+	<div id='input_info' style="float:right;background-color:white;margin: 0% 10% 0% 10%;width:40%">
+	  <form><br>
+		*First Name: <input type="text" name="fname"><br>
+		*Last Name: <input type="text" name="lastname"><br><br>
+
+		*Username: <input type="text" name="username"><br>
+		*Password: <input type="password" name="pswd"><br>
+		*Retype Password: <input type="password" name="repswd"><br><br>
+
+		*Email address: <input type="text" name="email"><br>
+		*Email Password: <input type="password" name="empswd"><br><br>
+
+		*Recovery Email: <input type="text" name="recemail"><br>
+		*Recovery Question: <select name="secQues">
+		  <option value="one">Security question one</option>
+		  <option value="two">Security question two</option>
+		  <option value="three">Security question three</option>
+		  <option value="four">Security question four</option>
+		  <option value="five">Security question five</option>
+		  </select>
+		<br>
+		*Recovery Answer: <input type="text" name="secAns"><br>
+
+	  </form><br>
+	</div>
+
+
+
+</body>
+<br>
+
+	
+</html>
