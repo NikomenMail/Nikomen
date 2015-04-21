@@ -18,26 +18,39 @@ a:hover {color:#990099}
         <div id='LogoSpan'>
             <img src="nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" style="width:100%;height:175px">
         </div>
-	<br>
+	
         <div class='TextSpan'>
             <div id='InfoBox'>
             
                 <!--Insert the company bio here -->
            
             </div>
-            <div id='Login'>
-		    <br><br><a href="create.html"><img src="createButton.jpg" alt="Create New" style="Width:480px;height:150px"></a><br><br><br>
+            <div id='SideBox'>	
+				<div id='CreateBox'>
+						<h1>New User?</h1>
+				</div>	
+				<div id='LoginBox'>
+					
+					<hr>
+					<form action="login_function">  <!--Create login-handling logic function -->
 		
-            <form action="login_function">  <!--Create login-handling logic function -->
-            
- 		        <h1>LOGIN</h1><br>
-		        Username:<input type="text" name="username">
-		        <br>
-		        Password: <input type="password" name="password">
-		        <br>
-		        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-		        <input type="submit" value="Login"> &nbsp <a href="forgot_login.html">Forgot Password? </a>
-		    </form>
+	
+					<p>
+						<label>Username:
+						<input type="text" name="username" style="float:right; margin-right: 5%">
+						</label>
+					
+						<label>Password:
+						<input type="password" name="password" style="float:right; margin-right: 5%">
+						</label>
+					</p>
+
+					<div style="width:100; float: right; margin-right: 5%;">
+					<input type="submit" value="Login" style="width:55px"> 
+					<a 	href="forgot_login.html">Forgot Password? </a>
+						</div>	
+					</form>
+				</div>
             </div>
 	                
         </div>
