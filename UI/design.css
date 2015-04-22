@@ -37,6 +37,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', end
 
 }
 
+#InfoBox
+{
+	width:60%;
+	float: left;
+	padding: 6% 4% 4% 6%;
+}
+
 #LogoSpan
 {
 	background-color: blue;
@@ -48,12 +55,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', end
 
 #SideBox
 {
-	
-	width: 35%;
+	background-color: white ; 
+	width: 36%;
 	min-width: 365px;
 	min-height: inherit;
 	float: right;
-	padding: 5% 5% 5% 5%;
+	padding: 3% 5% 5% 5%;
+	border-left: 3px ridge black;
 }
 
 
@@ -63,6 +71,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', end
 	
 }
 
+#signUp
+{
+	width: 75%;
+	margin-left:10%;
+	margin-right:10%;
+}
+
+	hr { 
+		display: block;
+		margin-top: 10%;
+		margin-bottom: 10%;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: inset;
+		border-width: 1px;
+	}
 #LoginBox label
 {
 	width:100%;
@@ -82,4 +106,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', end
 {
 	width:100%;
 	height: auto;
+}
+
+.Avatar
+{
+	width: 16em;
+	height: 16em;
 }
