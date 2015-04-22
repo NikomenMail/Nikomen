@@ -1,6 +1,8 @@
 #!/usr/bin/python2.7
 
-class Person:
+from contact import Contact
+
+class Person(Contact):
     def __init__(self, imageName=None):
         """Constructor for the person class"""
         if (imageName != None):
