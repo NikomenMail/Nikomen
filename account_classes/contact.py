@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 
-from account import Account
+from address import Address
 
 class Contact:
     """This is the contact class"""
@@ -20,15 +20,15 @@ class Contact:
         """Adds an Address class to the Contact"""
         tmpAddress = Address(emailAddress)
         #tmpAddress == None if email is invalid
-        if tmpAddress != None
+        if tmpAddress != None:
             self.addresses.append(tmpAddress)
 
     def getAddresses(self):
         """Returns the Address of this Contact"""
         return self.addresses
-    def deleteAddress(self, address)
+    def deleteAddress(self, address):
         """Deletes Address of this Contact"""
         self.addresses.remove(address)
-    def editAddress(self, oldAddress, newAddress)
+    def editAddress(self, oldAddress, newAddress):
         self.addresses.remove(address)
         self.addresses.append(newAddress)

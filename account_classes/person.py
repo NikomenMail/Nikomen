@@ -3,8 +3,9 @@
 from contact import Contact
 
 class Person(Contact):
-    def __init__(self, imageName=None):
+    def __init__(self, name, imageName=None):
         """Constructor for the person class"""
+        super(Contact, self).__init__(name)
         if (imageName != None):
             self.imageName = imageName
     def getImageName(self):

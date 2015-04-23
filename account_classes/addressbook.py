@@ -20,8 +20,17 @@ class AddressBook:
     def addMailList(self, maillist):
         """Adds a new MailList class to the list in the Address Book instance"""
         self.mailLists.append(maillist)
+    def getContact(searchString):
+        """Implement Search Methods"""
+        return None
+    def getByMailList(searchString):
+        """Implement Search Methods"""
+        return None
     def deleteContact(self, contactName):
         print "Implement delete contact!"
-    def deleteMailList(self, mailListName)
+    def deleteMailList(self, mailListName):
         """NEEDS better implementation, add Name parameter to MailList class"""
         self.mailLists.remove(mailListName)
+    def findEmail(search):
+        """NEEDS call for search"""
+        return None

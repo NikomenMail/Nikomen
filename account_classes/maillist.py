@@ -5,10 +5,9 @@ from contact import Contact
 class MailList(Contact):
     """This is the Mail List Class. It is a subclass of
     the Contact Superclass"""
-    def __init__(self, description=None):
-        if (description != None)
-            self.description = description
-
+    def __init__(self, name, description=None):
+        self.name = name
+        self.description = description
     def setDescription(self, description):
         """Sets the description of a MailList Instance"""
         self.description = description
