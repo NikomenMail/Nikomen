@@ -1,5 +1,8 @@
 __author__ = 'angeloluna'
 
+import datetime
+
+
 class Email(object):
     def __init__(self, sAddr, rAddr, subject, message, attachment):
         self.sAddr = sAddr
@@ -8,11 +11,14 @@ class Email(object):
         self.message = message
         self.attachment = attachment
 
-    def move(self, box):
+        self.time = datetime.now().time()
+
+
+    def reply(self):
         pass
 
-    def copy(self, box):
+    def forward(self):
         pass
 
-    def send(self):
-        pass
+
+
