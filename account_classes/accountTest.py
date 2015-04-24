@@ -7,7 +7,9 @@ from account import Account
 
 
 class AccountTester:
+    """This class runs all relevant tests on Account classes"""
     def __init__(self, numberOfTrials):
+        """Constructor, only requires a number of trials to run"""
         self.numberOfTrials = numberOfTrials
         self.accounts = []
         self.checks = []
@@ -15,19 +17,23 @@ class AccountTester:
         self.logFile = open('TestLog.txt', 'w')
 
     def test_accounts(self):
+        """Runs tests on all account instances"""
         # Edit the Accounts (*Update checks accordingly)
         self.check_account()
         self.logFile.close()
 
     def check_account(self):
+        """This runs checks on all parameters of an account class"""
         print "Checking Usernames"
         self.logFile.write("==USERNAME CHECKS==\n")
         successes = 0
         failures = 0
         test_iteration = 1
+        total_tests = self.numberOfTrials * 3
         # Check Username
         for check in self.checks:
             self.log(check.checkUsername(), "Username Check", check.getUsername())
+            self.update_terminal(test_iteration, total_tests)
             if check.checkUsername():
                 successes += 1
             else:
@@ -39,10 +45,12 @@ class AccountTester:
         # Check passwords
         for check in self.checks:
             result = check.checkPassword()
+            self.update_terminal(test_iteration, total_tests)
             if result:
                 successes += 1
             else:
                 failures += 1
+            test_iteration += 1
             self.log(result, "Password Check", check.getUsername())
         self.logStat(successes, failures)
         successes = 0
@@ -54,6 +62,8 @@ class AccountTester:
                 successes += 1
             else:
                 failures += 1
+            test_iteration += 1
+            self.update_terminal(test_iteration, total_tests)
             self.log(result, "Person Check", check.getUsername())
         print ""
         self.logStat(successes, failures)
@@ -96,6 +106,13 @@ class AccountTester:
         successToFail = numPass / totalTests
         successToFail *= 100
         self.logFile.write("Test Results: Passed: %d, Failed %d, Success Rate %f\n" % (numPass, numFail, successToFail))
+
+    def update_terminal(self, trials_done, total_trials):
+        """Updates terminal of progress"""
+        completion = (trials_done * 100 / total_trials)
+        #print trials_done, total_trials, completion
+        sys.stdout.write("\rTests: %d%%" % completion)
+        sys.stdout.flush()
 
 
 class AccountCheck:
