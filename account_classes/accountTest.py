@@ -2,6 +2,7 @@
 
 import string
 import random
+import sys
 from account import Account
 
 class AccountTester:
@@ -11,18 +12,37 @@ class AccountTester:
         self.checks = []
         self.passwords = []
         self.usernames = []
-        self.logFile = "d"
-    def testAccounts(self):
         self.createAccounts()
+        self.logFile = open('TestLog.txt', 'w')
+    def testAccounts(self):
         #Edit the Accounts (*Update checks accordingly)
-
+        self.checkAccount()
+        self.logFile.close()
     def checkAccount(self):
         print "Checking Usernames"
+        self.logFile.write("==USERNAME CHECKS==\n")
+        successes = 0
+        failures = 0
+        testIteration = 1
+        print len(self.checks)
         for check in self.checks:
-            if check.checkUsername:
-                print "Check for account:", check.getUsername, "passed!"
+            self.log(check.checkUsername(), "Username Check", check.getUsername())
+            if check.checkUsername():
+                successes += 1
             else:
-                print "Check for account:", check.getUsername, "failed!!!"
+                failures += 1
+            testIteration += 1
+        successes = 0
+        failures = 0
+        for check in self.checks:
+            result = check.checkPassword()
+            if result:
+                successes += 1
+            else:
+                failures += 1
+            self.log(result, "Password Check", check.getUsername())
+        print "\n"
+        self.logStat(successes, failures)
 
     def createAccounts(self):
         for i in range(1, self.numberOfTrials):
@@ -31,7 +51,6 @@ class AccountTester:
             passwordString = self.generateRandomString()
             self.passwords.append(passwordString)
             emailAddress = self.generateRandomString(3)+"@"+"gmail.com"
-            print "Creating account with: ", accountName, passwordString, emailAddress
             newAccount = Account(accountName, passwordString)
             newCheck = accountCheck(passwordString, accountName, newAccount)
             #Create Account with corresponding Check
@@ -47,9 +66,16 @@ class AccountTester:
         print "Details: Username       Password"
         for a in self.accounts:
             a.printAccount()
-    def log(self, check, type, accountName):
+    def log(self, check, checkType, accountName):
         if check == True:
-            print ";ol"
+            self.logFile.write("PASSED: %s %s\n" % (checkType, accountName))
+        else:
+            self.logFile.write("FAILED: %s %s\n" % (checkType, accountName))
+    def logStat(self, numPass, numFail):
+        totalTests = numPass + numFail
+        successToFail = numPass / totalTests
+        successToFail *= 100
+        self.logFile.write("Test Results: Passed: %d, Failed %d, Success Rate %f\n" % (numPass, numFail, successToFail))
 
 class accountCheck:
     def __init__(self, password, username, account):
@@ -62,6 +88,12 @@ class accountCheck:
 
     def setUsername(self, username):
         self.username = username
+
+    def getUsername(self):
+        return self.username
+
+    def getPassword(self):
+        return self.password
 
     def checkPassword(self):
         return self.password == self.account.getPassword()
