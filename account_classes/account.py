@@ -35,6 +35,10 @@ class Account:
         # Edit addresses
         print "Implment, username, password, image, and address change methods"
 
+    def set_user_name(self, new):
+        """Sets the account's username"""
+        self.person.set
+
     def getUsername(self):
         return self.username
 

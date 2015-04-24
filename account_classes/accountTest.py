@@ -19,12 +19,13 @@ class AccountTester:
     def test_accounts(self):
         """Runs tests on all account instances"""
         # Edit the Accounts (*Update checks accordingly)
+        print "Running Initial Tests"
         self.check_account()
+        print "Changing Account Settings"
         self.logFile.close()
 
     def check_account(self):
         """This runs checks on all parameters of an account class"""
-        print "Checking Usernames"
         self.logFile.write("==USERNAME CHECKS==\n")
         successes = 0
         failures = 0
@@ -68,6 +69,13 @@ class AccountTester:
         print ""
         self.logStat(successes, failures)
 
+    def alter_accounts(self):
+        """This method simulates the user changing the account settings"""
+        for check in self.checks:
+            acc = check.get_account()
+            new_string = self.generate_random_string()
+            acc.set
+
     def create_accounts(self):
         """This method creates a select number of accounts for testing"""
         for i in range(1, self.numberOfTrials):
@@ -109,9 +117,9 @@ class AccountTester:
 
     def update_terminal(self, trials_done, total_trials):
         """Updates terminal of progress"""
-        completion = (trials_done * 100 / total_trials)
-        #print trials_done, total_trials, completion
-        sys.stdout.write("\rTests: %d%%" % completion)
+        completion = ((trials_done) * 100 / (total_trials)) + 1
+        string_out = '\r[{0}] {1}%'.format('#'*(completion/10), completion)
+        sys.stdout.write(string_out)
         sys.stdout.flush()
 
 
@@ -131,6 +139,9 @@ class AccountCheck:
 
     def getUsername(self):
         return self.username
+
+    def get_account(self):
+        return self.account
 
     def getPassword(self):
         return self.password

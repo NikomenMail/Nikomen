@@ -9,6 +9,10 @@ class Person(Contact):
         super(Person, self).__init__(name=name, emailaddress=email)
         self.imageName = imageName
 
+    def set_name(self, new):
+        """Aaaahhhh"""
+        print "hello"
+
     def getImageName(self):
         """Returns the image file name"""
         return self.imageName
