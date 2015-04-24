@@ -1,0 +1,28 @@
+__author__ = 'angeloluna'
+
+from abc import ABCMeta, abstractmethod
+
+
+# abstract box object used to create all the boxes to store emails in.
+class Box(object):
+    __metaclass__ = ABCMeta
+
+    name = "Box"  # name of the Box
+    emails = [ ]  # list of emails
+    location = "location"  # location???
+
+    def retrieveEmail(self):
+        pass
+
+    def filter(self, list):
+        pass
+
+    def sort(self, list):
+        pass
+
+    def viewList(self):
+        pass
+
+    def createBox(self):
+        pass
+
