@@ -28,6 +28,13 @@ class Account:
         #Change image
         #Edit addresses
         print "Implment, username, password, image, and address change methods"
+
+    def getUsername(self):
+        return self.username
+
+    def getPassword(self):
+        """Probs make this method private and have it encapsulated with some authorized method"""
+        return self.password
     def printAccount(self):
         print "\t", self.username, "\t", self.password
 
