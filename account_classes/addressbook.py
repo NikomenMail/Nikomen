@@ -3,6 +3,7 @@
 from person import Person
 from maillist import MailList
 
+
 class AddressBook:
     def __init__(self, persons, maillists):
         """The constructor of an Address Book"""
@@ -10,27 +11,34 @@ class AddressBook:
         self.mailLists = []
         #For every person add them to the list
         for p in persons:
-            addPerson(p)
+            self.add_person(p)
         #For every mail list add it to the list
         for m in maillists:
-            addMailList(m)
-    def addPerson(self, person):
+            self.add_mail_list(m)
+
+    def add_person(self, person):
         """Adds a new Person class to the list in the Address Book instance"""
         self.personList.append(person)
-    def addMailList(self, maillist):
+
+    def add_mail_list(self, maillist):
         """Adds a new MailList class to the list in the Address Book instance"""
         self.mailLists.append(maillist)
-    def getContact(searchString):
+
+    def get_contact(searchString):
         """Implement Search Methods"""
         return None
-    def getByMailList(searchString):
+
+    def get_by_mail_list(searchString):
         """Implement Search Methods"""
         return None
-    def deleteContact(self, contactName):
+
+    def delete_contact(self, contactName):
         print "Implement delete contact!"
-    def deleteMailList(self, mailListName):
+
+    def delete_mail_list(self, mailListName):
         """NEEDS better implementation, add Name parameter to MailList class"""
         self.mailLists.remove(mailListName)
-    def findEmail(search):
+
+    def find_email(search):
         """NEEDS call for search"""
         return None
