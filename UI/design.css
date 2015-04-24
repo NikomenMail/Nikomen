@@ -20,6 +20,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4d0d9', end
 	width:80%;
 	margin: 2em 10% 15% 10%;
 	min-height: 550px ;
+	height:auto;
 
 }
 
@@ -148,7 +149,7 @@ footer
 #UserBar
 {
 	float: right;
-	width: auto;
+	width: 45%;
 	
 	font-family: serif;
 	font-size: 2em;
@@ -157,9 +158,31 @@ color:white;
 	
 }
 
+
+
+#DynamicInbox
+{
+	min-height:300px;
+	float:left;
+	width:100%;
+	padding: 10% 10% 10% 10%;
+	font-family: sans-serif;
+	font-size: 1.5em;
+	color:grey;	
+}
+
+
+
 a
 {
 color:#404040;	
+}
+
+.text
+{
+	color:grey;
+	font-size:1em;
+	
 }
 
 a:link {
@@ -172,3 +195,20 @@ a:hover
 	color:black;
 	text-decoration: none;
 	font-size: 101%;
+}
+
+ul
+{
+	padding: none;
+	margin:none;
+}
+
+.DynamicHeader
+{
+	border-bottom: groove;
+	width: 100%;
+	height: auto;
+	color:#404040;
+	padding: 1% 0% 0% 2%;
+	font-size: 3em;
+}
