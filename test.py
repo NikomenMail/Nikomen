@@ -3,4 +3,4 @@
 from account_classes.accountTest import AccountTester
 
 accountTest = AccountTester(100)
-accountTest.testAccounts()
+accountTest.test_accounts()

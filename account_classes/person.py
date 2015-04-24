@@ -2,15 +2,22 @@
 
 from contact import Contact
 
+
 class Person(Contact):
-    def __init__(self, name, imageName=None):
+    def __init__(self, name, email, imageName=None):
         """Constructor for the person class"""
-        super(Contact, self).__init__(name)
-        if (imageName != None):
-            self.imageName = imageName
+        super(Person, self).__init__(name=name, emailaddress=email)
+        self.imageName = imageName
+
     def getImageName(self):
         """Returns the image file name"""
         return self.imageName
+
+    def get_email_address(self):
+        """Returns the Person's email address"""
+        addresses = self.get_addresses()
+        return addresses[0].get_address()
+
     def deleteImage(self):
         """Deletes associated image"""
         self.imageName = None

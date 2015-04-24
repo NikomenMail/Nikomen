@@ -1,18 +1,19 @@
 #!/usr/bin/python2.7
 import re
 
+
 class Address:
     """This is the address class."""
     def __init__(self, address):
         """The initialization of an address, address strings are checked for validity"""
-        self.setAddress(address)
+        self.address = address
     
-    def _checkFormat(self, address):
+    def checkFormat(self, address):
         """This method checks the validity of an address string."""
         emailCheck = re.compile('[^@]+@[^@]+\.[^@]+')
         return emailCheck.match(address)
 
-    def getAddress(self):
+    def get_address(self):
         """Returns the address of this class"""
         return self.address
 
@@ -21,5 +22,5 @@ class Address:
         if(self._checkFormat(address)):
             self.address = address
         else:
-            return False
+            self.address = None
         return True
