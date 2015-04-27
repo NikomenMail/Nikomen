@@ -10,18 +10,29 @@ class Box(object):
     name = "Box"  # name of the Box
     emails = [ ]  # list of emails
     location = "location"  # location???
+    list = []
 
     def retrieve_email(self, email):
         """Retrieve email from server"""
         pass
 
-    def filter(self, list):
+    def filter(self):
         """Filter email on conditions"""
         pass
 
-    def sort(self, list, condition):
-        """sort email by conditions"""
-        pass
+    def sort(self, condition):
+        """sort email by conditions, 1 """
+        if condition == 0:
+            """sort by date"""
+            list.sort(key=lambda email: email.time, reverse=True)
+        elif condition == 1:
+            """sort by subject"""
+            list.sort(key=lambda email: email.subject, reverse=True)
+        elif condition == 2:
+            """sort by sender"""
+            list.sort(key=lambda email: email.sAddr, reverse=True)
+        else:
+            print('ERROR')
 
     def view_list(self):
         """view list of emails"""

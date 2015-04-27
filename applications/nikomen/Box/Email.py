@@ -13,6 +13,7 @@ class Email(object):
 
         self.time = datetime.now().time()
 
+        self.isRead = True
 
     def reply(self):
         pass
