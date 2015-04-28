@@ -2,16 +2,11 @@ __author__ = 'angeloluna'
 
 from abc import ABCMeta, abstractmethod
 
-
 class Box(object):
     """abstract box object used to create all the boxes to store emails in."""
     __metaclass__ = ABCMeta
 
-    name = "Box"  # name of the Box
-    emails = [ ]  # list of emails
-    location = "location"  # location???
-
-    def retrieve_email(self, email):
+    def add_email(self, email):
         self.emails.append(email)
 
     def filter(self, condition, item):
@@ -21,35 +16,32 @@ class Box(object):
         if condition == 0:
             """filter by subject"""
             for i in xrange(len(self.emails)):
-                if self.emails[i].subject == item:
+                if self.emails[i].subject.find(item) > -1:
                     filtered_list.append(self.emails[i])
 
         elif condition == 1:
             for i in xrange(len(self.emails)):
-                if self.emails[i].sAddr == item:
+                if self.emails[i].sAddr.find(item) > -1:
                     filtered_list.append(self.emails[i])
         else:
             print('ERROR')
 
         Box.print_list(filtered_list)
 
-    def sort(self, condition):
+    def sort(self, condition, rev):
         """sort email by conditions, 1 """
+
         if condition == 0:
             """sort by date"""
-            self.emails.sort(key=lambda email: email.time, reverse=False)
+            self.emails.sort(key=lambda email: email.time, reverse=rev)
         elif condition == 1:
             """sort by subject"""
-            self.emails.sort(key=lambda email: email.subject, reverse=False)
+            self.emails.sort(key=lambda email: email.subject, reverse=rev)
         elif condition == 2:
             """sort by sender"""
-            self.emails.sort(key=lambda email: email.sAddr, reverse=False)
+            self.emails.sort(key=lambda email: email.sAddr, reverse=rev)
         else:
             print('ERROR')
-
-    def view_list(self):
-        """view list of emails"""
-        pass
 
     def create_box(self):
         """create new box to store emails"""
@@ -61,12 +53,7 @@ class Box(object):
 
     def open(self, email):
         """open this email"""
-        pass
-
-    @staticmethod
-    def write(self):
-        """write a new email"""
-        pass
+        email.print_email()
 
     def flag(self, email, flag):
         """flag email"""
@@ -74,11 +61,15 @@ class Box(object):
 
     def move(self, email, box):
         """move this email to this box"""
-        pass
+        self.copy(email, box)
+        self.delete(email)
 
     def copy(self, email, box):
         """copy this email to this box"""
-        pass
+        box.add_email(email)
+
+    def save_draft(self, email, drafts):
+        drafts.add_email(email)
 
     def display(self):
         """display email list in this inbox"""
@@ -86,7 +77,6 @@ class Box(object):
 
     @staticmethod
     def print_list(email_list):
-        """overloaded display method that displays any list of emails"""
+        """prints email list"""
         for i in xrange(len(email_list)):
-            print email_list[i].time
-            print "   Subject: " + email_list[i].subject
+            email_list[i].print_email()
