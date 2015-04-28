@@ -10,27 +10,40 @@ class Box(object):
     name = "Box"  # name of the Box
     emails = [ ]  # list of emails
     location = "location"  # location???
-    list = []
 
     def retrieve_email(self, email):
-        """Retrieve email from server"""
-        pass
+        self.emails.append(email)
 
-    def filter(self):
+    def filter(self, condition, item):
         """Filter email on conditions"""
-        pass
+        filtered_list = []
+
+        if condition == 0:
+            """filter by subject"""
+            for i in xrange(len(self.emails)):
+                if self.emails[i].subject == item:
+                    filtered_list.append(self.emails[i])
+
+        elif condition == 1:
+            for i in xrange(len(self.emails)):
+                if self.emails[i].sAddr == item:
+                    filtered_list.append(self.emails[i])
+        else:
+            print('ERROR')
+
+        Box.print_list(filtered_list)
 
     def sort(self, condition):
         """sort email by conditions, 1 """
         if condition == 0:
             """sort by date"""
-            list.sort(key=lambda email: email.time, reverse=True)
+            self.emails.sort(key=lambda email: email.time, reverse=False)
         elif condition == 1:
             """sort by subject"""
-            list.sort(key=lambda email: email.subject, reverse=True)
+            self.emails.sort(key=lambda email: email.subject, reverse=False)
         elif condition == 2:
             """sort by sender"""
-            list.sort(key=lambda email: email.sAddr, reverse=True)
+            self.emails.sort(key=lambda email: email.sAddr, reverse=False)
         else:
             print('ERROR')
 
@@ -44,19 +57,20 @@ class Box(object):
 
     def delete(self, email):
         """delete this email"""
-        pass
+        self.emails.remove(email)
 
     def open(self, email):
         """open this email"""
         pass
 
+    @staticmethod
     def write(self):
         """write a new email"""
         pass
 
     def flag(self, email, flag):
         """flag email"""
-        pass
+        email.read()
 
     def move(self, email, box):
         """move this email to this box"""
@@ -66,5 +80,13 @@ class Box(object):
         """copy this email to this box"""
         pass
 
+    def display(self):
+        """display email list in this inbox"""
+        Box.print_list(self.emails)
 
-
+    @staticmethod
+    def print_list(email_list):
+        """overloaded display method that displays any list of emails"""
+        for i in xrange(len(email_list)):
+            print email_list[i].time
+            print "   Subject: " + email_list[i].subject
