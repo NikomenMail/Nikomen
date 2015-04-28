@@ -8,3 +8,5 @@ httpserver.*
 .idea
 TestLog.txt
 NikomenEmailClient-d*
+
+applications/nikomen/errors/*

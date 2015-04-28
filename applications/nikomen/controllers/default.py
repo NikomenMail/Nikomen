@@ -1,4 +1,3 @@
-from input_check import Checker
 
 
 def index():
@@ -49,28 +48,65 @@ def call():
     """
     return service()
 
+
 def login_function():
     form = SQLFORM(db.login)
     username = request.vars.username
     password = request.vars.password
     print "Username:", username
     print "Password:", password
-    if Checker.check_login(username, password):
+    if check_login(username, password):
         print "Valid checks"
 
     return dict(form=form)
+
 
 def create_redirect():
     redirect(URL('create.html'))
     return dict()
 
+
 def create():
-    print "Creating account"
     form = SQLFORM(db.login)
     return dict()
 
+
 def create_function():
-    print "Creating account for realz"
+    #print "Creating account for realz"
     form = SQLFORM(db.register)
-    print request.vars
+   # print request.vars
+    check = check_registration(request.vars.fname, request.vars.lastname, request.vars.pswd, request.vars.repswd,
+                               request.vars.email, request.vars.empswd, request.vars.recemail, request.vars.secQues,
+                               request.vars.secAns)
+    if check:
+        print "Registration passed!"
+        redirect(URL('email.html'))
+        return dict(form=form)
+    else:
+        print "Registration rejected!"
+        redirect(URL('create.html'))
     return dict()
+
+
+def email():
+    print db.register
+    return dict()
+
+"""The following methods check for input validity for login information"""
+
+def check_login(username, password):
+    if username == None or password == None:
+        return False
+    return True
+
+
+def check_registration(fname, lastname, pswd, repswd, email, empswd, recemail, secQues, secAns):
+    print "First Name:", fname, "\nLast Name:", lastname, "\nPassword:", pswd, "\nCPassword:", repswd, "\nEmail:", email, \
+        "\nEmail Password:", empswd, "\nRecovery Email:", recemail, "\nSecurity Question:", secQues, "\nSecurity Answer:", secAns
+    if fname == None or lastname == None or pswd == None or email == None or empswd == None or recemail == None or secQues == None or secAns == None:
+        print "Missing fields!"
+        return False
+    if pswd != repswd:
+        print "Passwords do not match!"
+        return False
+    return True
