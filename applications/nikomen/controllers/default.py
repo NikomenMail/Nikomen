@@ -8,17 +8,8 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    form = FORM(DIV("Username: ", INPUT(_name="username", _type="text", requires=IS_IN_DB(db, db.users.username))),
-                DIV("Password: ", INPUT(_name="password", _type="password", requires=IS_IN_DB(db, db.users.password))),
-                DIV(INPUT(_type="submit", _value="Login")))
-    """Input Variable Check"""
-    if form.process().accepted:
-        print "Checking Password"
-    elif form.errors:
-        session.logged_in_user = None
-        response.flash = "Incorrect login"
-
-    return dict(form=form)
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
 
 
 def user():
@@ -70,13 +61,13 @@ def login_function():
     return dict(form=form)
 
 
-
 def create_redirect():
     redirect(URL('create.html'))
     return dict()
 
 
 def create():
+<<<<<<< HEAD
     form = SQLFORM(db.register)
     if form.process().accepted:
         response.flash = 'form accepted'
@@ -86,6 +77,10 @@ def create():
     else:
         response.flash = 'please fill out the form'
     return dict(form=form)
+=======
+    form = SQLFORM(db.login)
+    return dict()
+>>>>>>> eebf424a01d6c1ffe364136c734c44d0e2e9980d
 
 
 def create_function():
@@ -114,6 +109,12 @@ def email():
     return dict()
 
 """The following methods check for input validity for login information"""
+
+
+def check_login(username, password):
+    if username == None or password == None:
+        return False
+    return True
 
 
 def check_registration(fname, lastname, username, pswd, repswd, email, empswd, recemail, secQues, secAns):

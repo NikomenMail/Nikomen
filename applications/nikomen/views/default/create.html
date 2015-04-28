@@ -15,24 +15,30 @@ Create servlet to upload pic. accept_info() to be created -->
 </head>
 
 <body>
-	<div id='LogoSpan'>
-		<img src="../Images/nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" style="width:100%;height:175px">
-	</div><br>
+
+
+        <div id='LogoSpan'>
+            <img src="{{=URL(r=request,c='static',f='nikomen_logosmall.jpg')}}" alt="A Greek Lord Running to Deliver Your Message" style="width:100%;height:175px">
+        </div><br>
+
 
 	<div style="background-color:white">
 		<h1><center>CREATE ACCOUNT</center></h1>
 	</div>
 
-	<div style="width: 80%; overflow: hidden;background-color:white;margin: 0% 10% 0% 10%;">
-		<div id='input_pic' style="float:left;margin: 0% 0% 0% 10%;width:40%">
-			<center>
-    			<br><br>
-    			<img class='Avatar' src="Images/niko_man.jpg" style="width:250px; height:300px"><br>
-				<form action="upload_pic.jsp">
-	  				<input type="file" name="prof_pic" accept="image/*">
-          			<br><br>
-				</form>
-			</center>
+
+      <div style="width: 80%; overflow: hidden;background-color:white;margin: 0% 10% 0% 10%;">
+
+	<div id='input_pic' style="float:left;margin: 0% 0% 0% 10%;width:40%">
+<center>
+    <br><br>
+	
+    <img class='Avatar' src="{{=URL(r=request,c='static',f='niko_man.jpg')}}" style="width:250px; height:300px"><br>
+	<form action="upload_pic.jsp">
+	  <input type="file" name="prof_pic" accept="image/*">
+          <br><br>
+	</form></center>
+
 	
 			<!--<button onclick="accept_info"> CREATE ACCOUNT</button>-->
 		</div>
