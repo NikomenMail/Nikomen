@@ -1,15 +1,21 @@
 from applications.nikomen.modules.account_classes.account import Account
 
-def index():
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
 
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+def index():
+    form = SQLFORM(db.login)
+    print "User submitted login request"
+    if form.process().accepted:
+        print "Logging in user"
+        user = auth.login_bare(form.vars.username, form.vars.pswd)
+        print "Checking login status"
+        if user == False:
+            print "Incorrect User login"
+            redirect(URL('index.html'))
+            return dict(form=form)
+        else:
+            print "Found User!"
+            redirect(URL('email.html'))
+    return dict(form=form)
 
 
 def user():
@@ -50,14 +56,10 @@ def call():
 
 
 def login_function():
-    form = SQLFORM(db.login)
-    username = request.vars.username
-    password = request.vars.password
-    print "Username:", username
-    print "Password:", password
-    if check_login(username, password):
-        print "Valid checks"
-
+    form = SQLFORM(db.users)
+    if form.process().accepted:
+        print "Checking Credentials"
+        IS_IN_DB(db, db.auth_user.username)
     return dict(form=form)
 
 
@@ -67,20 +69,25 @@ def create_redirect():
 
 
 def create():
-<<<<<<< HEAD
+    """This function handles the creation of a new account"""
     form = SQLFORM(db.register)
     if form.process().accepted:
-        response.flash = 'form accepted'
-        
+        print "Creating account!"
+        db.auth_user.insert(
+            username=form.vars.username,
+            password=form.vars.pswd,
+            email=form.vars.email,
+            first_name=form.vars.fname,
+            last_name=form.vars.lastname,
+        )
+        print "Created Account"
+
     elif form.errors:
         response.flash = 'form has errors'
+        print db.auth_user
     else:
         response.flash = 'please fill out the form'
     return dict(form=form)
-=======
-    form = SQLFORM(db.login)
-    return dict()
->>>>>>> eebf424a01d6c1ffe364136c734c44d0e2e9980d
 
 
 def create_function():
@@ -107,6 +114,11 @@ def create_function():
 def email():
     print db.register
     return dict()
+
+
+def user():
+    """User Controller"""
+    return dict(form=auth())
 
 """The following methods check for input validity for login information"""
 

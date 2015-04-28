@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
 db = DAL('sqlite://webform.sqlite', fake_migrate_all=True)
 # This defines the input fields for logging into an existing account
-db.define_table('users',
-=======
-db = DAL('sqlite://webform.sqlite')
-#This defines the input fields for logging into an existing account
 db.define_table('login',
->>>>>>> eebf424a01d6c1ffe364136c734c44d0e2e9980d
     Field('username', requires=IS_NOT_EMPTY()),
-    Field('password', requires=IS_NOT_EMPTY()))
+    Field('password', requires=IS_NOT_EMPTY(), type="password"))
 #This defines the input fields for creating a new account
 db.define_table('register',
     Field('fname', requires=IS_NOT_EMPTY()),
@@ -22,3 +16,16 @@ db.define_table('register',
     Field('recemail', requires=IS_NOT_EMPTY()),
     Field('secQues', requires=IS_NOT_EMPTY()),
     Field('secAns', requires=IS_NOT_EMPTY()))
+
+"""db.define_table('auth_user',
+    Field('username'),
+    Field('password'),
+    Field('email'),
+    Field('first_name'),
+    Field('last_name'),
+    Field('is_admin'))"""
+
+from gluon.tools import Auth
+auth = Auth(db, hmac_key=Auth.get_or_create_key())
+auth.define_tables(username=True, signature=False)
+auth.settings.profile_next = URL('email.html')
