@@ -11,10 +11,10 @@ Dyanmic title based off of username
 			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 		<link rel="stylesheet" type="text/css" href="design.css">
+                <link href="css3-gmail-style.css" media="all" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div id="LogoSpan" >	
-
 			<div id="UserBar">	
 					<a href="" >  Contact Us  </a>
 					|
@@ -26,50 +26,53 @@ Dyanmic title based off of username
 			
 				
 			</div>
-			
-			<img src="../Images/nikomen_logosmall.jpg" style="float: left; width:50%;">
 		</div>
 		
 		<div class="TextSpan" style="margin-bottom: 1%;" >
 			<div class='InBoxSpan'>
 			
-				<img src="../Images/signup1.png" style="width:80%; float:left; padding-left: 20%; padding-top: 5%;">		
-				
 				<div id="DynamicInbox">
-					<p> Folders </p>
 					
-					<div id="JS_Inbox">
 					<!-- Jquery to connnect to controller
 							Change what inboxes are seen
 					-->
-						
-						<ul><a class="text" href="">Inbox</a></ul>
-						<ul><a class="text" href="">Drafts</a></ul>
-						<ul><a class="text" href="">Sent</a></ul>
-						<ul><a class="text" href="">Trash</a></ul>
-						
-					
-					</div>
-					
-					<img src="../Images/signup1.png" style="width:80%; float:left; padding-left: 10%;">	
 					
 				</div>
 				
-				<img src="../Images/addressbook.png" style="height:12em; float:left; padding-left: 25%; padding-bottom: 10%;">
-				
 			</div>
 			<div class="EmailSpan">
-				
-				<!-- Add Jqueary for the dynamic header <p> tag. -->
-				
-				<div class="DynamicHeader">
-					
-					<p>Inbox</p>
+			
 
-					<!-- Add Jqueary to dynamicaly get the emails table. -->
-					<div id="DynamicTable">
+                            <ul class="grouped">
+                            <li style="margin-right:20px;"><a href="#" class="bttn red">COMPOSE</a></li>
+                            <li><a href="#" class="bttn icon refresh">Refresh</a></li>
+                            <li><a href="#" class="bttn mark_read">Mark as Read</a></li>
+                            <li><a href="#" class="bttn mark_unread">Mark as Unread</a></li>
+                            <li><a href="#" class="bttn icon delete">Delete</a></li>
+                            <li><a href="#" class="bttn icon folder">Folder</a></li>
+                            </ul>
+                        
+        
+                        
+                        <table class="table table-bordered mailinbox" style="border-collapse:collapse; margin-top:10px;" border="0" cellpadding="5" cellspacing="3">
+
+                            <thead>
+                            <tr>
+                                <th class="head1 aligncenter"><input type="checkbox" class="checkall" /></th>
+                                <th class="head0">&nbsp;</th>
+                                <th class="head1">Sender</th>
+                                <th class="head0">Subject</th>
+                                <th class="head1 attachement">&nbsp;</th>
+                                <th class="head0">Date</th>
+                            </tr>
+                            </thead>
+                                
+				<div id="DynamicEmail">
 					
-					</div>
+					<!-- Jquery to connnect to controller
+							Change what emails are seen based off inbox
+							Read/write/draft
+					-->
 					
 				</div>
 			
