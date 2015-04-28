@@ -2,7 +2,7 @@
 *.pyc
 *~
 *.xml
-.DS_Store
+.DC_Store
 .idea
 TestLog.txt
 NikomenEmailClient-d*
