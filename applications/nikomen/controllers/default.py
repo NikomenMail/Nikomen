@@ -67,8 +67,20 @@ def create_redirect():
 
 
 def create():
+<<<<<<< HEAD
+    form = SQLFORM(db.register)
+    if form.process().accepted:
+        response.flash = 'form accepted'
+        
+    elif form.errors:
+        response.flash = 'form has errors'
+    else:
+        response.flash = 'please fill out the form'
+    return dict(form=form)
+=======
     form = SQLFORM(db.login)
     return dict()
+>>>>>>> eebf424a01d6c1ffe364136c734c44d0e2e9980d
 
 
 def create_function():
