@@ -1,8 +1,5 @@
 #!/usr/bin/python2.7
 
-from person import Person
-from maillist import MailList
-
 
 class AddressBook:
     def __init__(self, persons, maillists):

@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 
-from address import Address
+from applications.nikomen.modules.account_classes.address import Address
 
 
 class Contact(object):

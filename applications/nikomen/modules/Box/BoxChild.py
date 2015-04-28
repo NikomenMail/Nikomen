@@ -1,6 +1,6 @@
-__author__ = 'angeloluna'
+from applications.nikomen.modules.Box import Box
 
-from Box import Box
+__author__ = 'angeloluna'
 
 
 class Inbox(Box):

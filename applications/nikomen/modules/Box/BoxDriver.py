@@ -1,7 +1,9 @@
+from applications.nikomen.modules.Box import Email
+
 __author__ = 'angeloluna'
 
-from BoxChild import *
-from Email import Email
+from applications.nikomen.modules.Box.BoxChild import *
+
 """self, sAddr, rAddr, subject, message, attachment"""
 a = Email("2@gmail.com", "rAddr@gmail.com", "a Test Email 2", "this is a test message", 0)
 b = Email("3@hotmail.com", "rAddr@gmail.com", "b Test Email 3", "this is a test message", 0)

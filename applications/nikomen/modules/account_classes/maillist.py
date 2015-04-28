@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 
-from contact import Contact
+from applications.nikomen.modules.account_classes.contact import Contact
 
 class MailList(Contact):
     """This is the Mail List Class. It is a subclass of

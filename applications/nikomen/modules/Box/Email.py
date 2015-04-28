@@ -1,7 +1,9 @@
+from applications.nikomen.modules.Box import Box
+
 __author__ = 'angeloluna'
 
 import datetime
-import Box
+
 
 class Email(object):
     def __init__(self, sAddr, rAddr, subject, message, attachment):

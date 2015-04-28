@@ -1,10 +1,13 @@
-#!/usr/bin/python2.7
-
-from person import Person
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import hashlib
+
+from applications.nikomen.modules.account_classes.person import Person
+
 
 class Account:
     def __init__(self, username, password, email):
+        print "Creating Account..."
         self.username = username
         self.password = password #Add actual non-string storage of passwords
         self.person = Person(name=username, email=email)

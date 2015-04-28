@@ -3,7 +3,8 @@
 import string
 import random
 import sys
-from account import Account
+
+from applications.nikomen.modules.account_classes.account import Account
 
 
 class AccountTester:

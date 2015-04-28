@@ -1,5 +1,6 @@
+from applications.nikomen.modules.Box import TestClass
+
 __author__ = 'angeloluna'
-from TestClass import TestClass
 a = 5
 b = 15
 c = 25

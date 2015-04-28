@@ -1,4 +1,4 @@
-
+from applications.nikomen.modules.account_classes.account import Account
 
 def index():
     """
@@ -75,11 +75,15 @@ def create_function():
     #print "Creating account for realz"
     form = SQLFORM(db.register)
    # print request.vars
-    check = check_registration(request.vars.fname, request.vars.lastname, request.vars.pswd, request.vars.repswd,
-                               request.vars.email, request.vars.empswd, request.vars.recemail, request.vars.secQues,
-                               request.vars.secAns)
+    check = check_registration(request.vars.fname, request.vars.lastname, request.vars.username, request.vars.pswd,
+                               request.vars.repswd, request.vars.email, request.vars.empswd, request.vars.recemail,
+                               request.vars.secQues, request.vars.secAns)
     if check:
         print "Registration passed!"
+        new_account = Account(request.vars.username, request.vars.pswd, request.vars.email)
+        print "Account Username:", new_account.get_username()
+        print "Account Password:", new_account.get_password()
+        print "Email address:", new_account.get_person().get_email_address()
         redirect(URL('email.html'))
         return dict(form=form)
     else:
@@ -94,16 +98,17 @@ def email():
 
 """The following methods check for input validity for login information"""
 
+
 def check_login(username, password):
     if username == None or password == None:
         return False
     return True
 
 
-def check_registration(fname, lastname, pswd, repswd, email, empswd, recemail, secQues, secAns):
-    print "First Name:", fname, "\nLast Name:", lastname, "\nPassword:", pswd, "\nCPassword:", repswd, "\nEmail:", email, \
-        "\nEmail Password:", empswd, "\nRecovery Email:", recemail, "\nSecurity Question:", secQues, "\nSecurity Answer:", secAns
-    if fname == None or lastname == None or pswd == None or email == None or empswd == None or recemail == None or secQues == None or secAns == None:
+def check_registration(fname, lastname, username, pswd, repswd, email, empswd, recemail, secQues, secAns):
+    """print "First Name:", fname, "\nLast Name:", lastname, "\nPassword:", pswd, "\nCPassword:", repswd, "\nEmail:", email, \
+        "\nEmail Password:", empswd, "\nRecovery Email:", recemail, "\nSecurity Question:", secQues, "\nSecurity Answer:", secAns"""
+    if fname == None or lastname == None or username == None or pswd == None or email == None or empswd == None or recemail == None or secQues == None or secAns == None:
         print "Missing fields!"
         return False
     if pswd != repswd:
