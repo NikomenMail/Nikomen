@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+a:link {color:#CC0000}
+a:hover {color:#990099}
+</style>
+
+<head>
+    <title>Nikomen Home</title>
+	
+	{{response.files.append(URL('static','design.css'))}}
+    	{{include 'web2py_ajax.html'}}
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="design.css">
+</head>
+<body>
+        <div id='LogoSpan'>
+            <img src="Images/nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" style="width:100%;height:175px">
+        </div>
+	
+        <div class='TextSpan'>
+			<div id='TextBox'>
+            <div id='InfoBox'>
+            
+                <!--Insert the company bio here -->
+				<h1>Who are we?</h1>
+				
+				<p>		Ne alii theophrastus definitionem sea, utamur persius quo ad. Ad ius nibh latine civibus, pro ne saperet constituto conclusionemque. Causae deserunt vis ad. Cum an sonet platonem. Ne vix sint labore assueverit, pri alterum nominavi deterruisset ut, sed melius dolorum ullamcorper ut. Viderer adipiscing ne sit.</p>
+				<p>
+
+					Lucilius salutatus te sit, sit no quot soleat accusata, usu at labitur eruditi salutatus. Elitr molestie urbanitas ex duo, sit sumo disputando interpretaris eu. Ad vim detracto splendide. At sumo etiam appellantur sea. Ne vim essent civibus vulputate, sed dissentias scripserit cu. Reque perfecto erroribus id eum, eu justo noluisse definiebas ius.
+				</p>
+					<p>Elitr molestie urbanitas ex duo, sit sumo disputando interpretaris eu. Ad vim detracto splendide. At sumo etiam appellantur sea. Ne vim essent civibus vulputate, sed dissentias scripserit cu. Reque perfecto erroribus id eum, eu justo noluisse definiebas ius.
+           </p>
+				</div>
+				
+				
+            </div>
+            <div id='SideBox'>	
+				<div id='CreateBox'>
+					<h3>New User?</h3>
+				
+					<p>Nikomen is a free open source mail client. We currently only serve gmail accounts. </p>
+					
+					<!--Go to create_functino here -->
+					<form action="create.html">
+						<br>
+						<input type="image" src="Images/signup1.png" id="signUp">
+					</form>
+				</div>
+						
+					
+				<div id='LoginBox'>
+					
+					<hr>
+					<br>
+					<form action="login_function">  <!--Create login-handling logic function -->
+		
+					
+					<p>
+						<label>Username:
+						<input type="text" name="username" style="float:right; margin-right: 5%">
+						</label>
+					
+						<label>Password:
+						<input type="password" name="password" style="float:right; margin-right: 5%">
+						</label>
+					</p>
+
+					<div style="width:100px; float: right; margin-right: 5%;">
+					<input type="submit" value="Login" style="width:55px"> 
+					<a 	href="forgot_login.html">Forgot Password? </a>
+						</div>	
+					</form>
+					
+					
+				</div>
+				
+				
+            </div>
+	                
+        </div>
+        
+
+
+</body>
+
+	
+</html>

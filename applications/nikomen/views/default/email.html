@@ -1,0 +1,86 @@
+<!-- 
+Dyanmic title based off of username
+-->
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Dyanmic title based off of username-->
+		<title></title>
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		{{response.files.append(URL('static','design.css'))}}
+    	{{include 'web2py_ajax.html'}}
+		<link rel="stylesheet" type="text/css" href="design.css">
+        <link href="css3-gmail-style.css" media="all" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="LogoSpan" >	
+			<div id="UserBar">	
+					<a href="" >  Contact Us  </a>
+					|
+					<a href="" >  Home  </a>
+					|
+					<a href="" >  Settings  </a>
+					|
+					<a href="" >  Logout  </a>
+			
+				
+			</div>
+		</div>
+		
+		<div class="TextSpan" style="margin-bottom: 1%;" >
+			<div class='InBoxSpan'>
+			
+				<div id="DynamicInbox">
+					
+					<!-- Jquery to connnect to controller
+							Change what inboxes are seen
+					-->
+					
+				</div>
+				
+			</div>
+			<div class="EmailSpan">
+			
+
+                            <ul class="grouped">
+                            <li style="margin-right:20px;"><a href="#" class="bttn red">COMPOSE</a></li>
+                            <li><a href="#" class="bttn icon refresh">Refresh</a></li>
+                            <li><a href="#" class="bttn mark_read">Mark as Read</a></li>
+                            <li><a href="#" class="bttn mark_unread">Mark as Unread</a></li>
+                            <li><a href="#" class="bttn icon delete">Delete</a></li>
+                            <li><a href="#" class="bttn icon folder">Folder</a></li>
+                            </ul>
+                        
+        
+                        
+                        <table class="table table-bordered mailinbox" style="border-collapse:collapse; margin-top:10px;" border="0" cellpadding="5" cellspacing="3">
+
+                            <thead>
+                            <tr>
+                                <th class="head1 aligncenter"><input type="checkbox" class="checkall" /></th>
+                                <th class="head0">&nbsp;</th>
+                                <th class="head1">Sender</th>
+                                <th class="head0">Subject</th>
+                                <th class="head1 attachement">&nbsp;</th>
+                                <th class="head0">Date</th>
+                            </tr>
+                            </thead>
+                                
+				<div id="DynamicEmail">
+					
+					<!-- Jquery to connnect to controller
+							Change what emails are seen based off inbox
+							Read/write/draft
+					-->
+					
+				</div>
+			
+			</div>
+			
+		</div>
+		
+	</body>
+</html>
