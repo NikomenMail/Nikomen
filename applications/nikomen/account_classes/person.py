@@ -13,6 +13,9 @@ class Person(Contact):
         """Aaaahhhh"""
         print "hello"
 
+    def set_image_name(self, path):
+        self.imageName = path
+
     def getImageName(self):
         """Returns the image file name"""
         return self.imageName

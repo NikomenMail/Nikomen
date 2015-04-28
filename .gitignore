@@ -2,6 +2,7 @@
 *.pyc
 *~
 *.xml
+.DC_Store
 .DS_Store
 .idea
 TestLog.txt

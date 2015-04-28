@@ -10,13 +10,13 @@ Dyanmic title based off of username
 		<title></title>
 			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
+		{{response.files.append(URL('static','design.css'))}}
+    	{{include 'web2py_ajax.html'}}
 		<link rel="stylesheet" type="text/css" href="design.css">
-                <link href="css3-gmail-style.css" media="all" rel="stylesheet" type="text/css" />
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link href="css3-gmail-style.css" media="all" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div id="LogoSpan" >
-                    <img src="../Images/nikomen_logosmall.jpg" alt="A Greek Lord Running to Deliver Your Message" style="width:65%;height:125px; margin:3% 0% 0% 0%">
+		<div id="LogoSpan" >	
 			<div id="UserBar">	
 					<a href="" >  Contact Us  </a>
 					|
@@ -38,17 +38,6 @@ Dyanmic title based off of username
 					<!-- Jquery to connnect to controller
 							Change what inboxes are seen
 					-->
-                                        <center><h2>Boxes</h2></center>
-                                        <div class='break' style='background-color:#868F95'>
-                                            <br><br>
-                                        </div>
-                                        <a href="#"><center><h3>Inbox</h3></center></a>
-                                        <a href="#"><center><h3>Drafts</h3></center></a>
-                                        <a href="#"><center><h3>Sent</h3></center></a>
-                                        <a href="#"><center><h3>Trash</h3></center></a>
-                                        
-                                        <br><br><br>
-                                        <a href="#"><center><img src='../Images/addressbook.png'</center></a>
 					
 				</div>
 				
@@ -62,6 +51,7 @@ Dyanmic title based off of username
                             <li><a href="#" class="bttn mark_read">Mark as Read</a></li>
                             <li><a href="#" class="bttn mark_unread">Mark as Unread</a></li>
                             <li><a href="#" class="bttn icon delete">Delete</a></li>
+                            <li><a href="#" class="bttn icon folder">Folder</a></li>
                             </ul>
                         
         
@@ -85,7 +75,6 @@ Dyanmic title based off of username
 							Change what emails are seen based off inbox
 							Read/write/draft
 					-->
-                                        
 					
 				</div>
 			

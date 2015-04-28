@@ -7,10 +7,12 @@ Create servlet to upload pic. accept_info() to be created -->
 <html>
 <head>
     <title>Nikomen Create Account</title>
+	
+	{{response.files.append(URL('static','design.css'))}}
+    {{include 'web2py_ajax.html'}}
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="design.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@ Create servlet to upload pic. accept_info() to be created -->
 	<div id='input_pic' style="float:left;margin: 0% 0% 0% 10%;width:40%">
 <center>
     <br><br>
-    <img class='Avatar' src="../Images/niko_man.jpg" style="width:250px; height:300px"><br>
+    <img class='Avatar' src="Images/niko_man.jpg" style="width:250px; height:300px"><br>
 	<form action="upload_pic.jsp">
 	  <input type="file" name="prof_pic" accept="image/*">
           <br><br>
