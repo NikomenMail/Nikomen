@@ -23,7 +23,10 @@ class Email(object):
         pass
 
     def read(self):
-        self.isRead = False
+        if self.isRead:
+            self.isRead = False
+        else:
+            self.isRead = True
     
     def to_object(self, email):
         """takes an email and creates an email object"""
@@ -34,5 +37,17 @@ class Email(object):
         pass
 
     def print_email(self):
-        print('subject' + 'message')
+        print self.time
+        print "   From : " + self.sAddr
+        print "   Subject: " + self.subject
+
+    @staticmethod
+    def write(sAddr, rAddr, subject, message, attachment):
+        """write a new email"""
+        return Email(sAddr, rAddr, subject, message, attachment)
+
+    @staticmethod
+    def send(email):
+        pass
+
 
