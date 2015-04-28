@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-db = DAL('sqlite://webform.sqlite')
+db = DAL('sqlite://webform.sqlite', fake_migrate_all=True)
 # This defines the input fields for logging into an existing account
 db.define_table('users',
     Field('username', requires=IS_NOT_EMPTY()),
@@ -9,10 +9,10 @@ db.define_table('register',
     Field('fname', requires=IS_NOT_EMPTY()),
     Field('lname', requires=IS_NOT_EMPTY()),
     Field('username', requires=IS_NOT_EMPTY()),
-    Field('pswd', requires=IS_NOT_EMPTY()),
-    Field('repswd', requires=IS_NOT_EMPTY()),
+    Field('pswd', requires=IS_NOT_EMPTY(), type="password"),
+    Field('repswd', requires=IS_NOT_EMPTY(), type="password"),
     Field('email', requires=IS_NOT_EMPTY()),
-    Field('empswd', requires=IS_NOT_EMPTY()),
+    Field('empswd', requires=IS_NOT_EMPTY(), type="password"),
     Field('recemail', requires=IS_NOT_EMPTY()),
     Field('secQues', requires=IS_IN_SET(['What is your birthplace?', 'What is your favorite color?', 'Will you remember this security question?'])),
     Field('secAns', requires=IS_NOT_EMPTY()))
