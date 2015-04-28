@@ -8,8 +8,17 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    form = FORM(DIV("Username: ", INPUT(_name="username", _type="text", requires=IS_IN_DB(db, db.users.username))),
+                DIV("Password: ", INPUT(_name="password", _type="password", requires=IS_IN_DB(db, db.users.password))),
+                DIV(INPUT(_type="submit", _value="Login")))
+    """Input Variable Check"""
+    if form.process().accepted:
+        print "Checking Password"
+    elif form.errors:
+        session.logged_in_user = None
+        response.flash = "Incorrect login"
+
+    return dict(form=form)
 
 
 def user():
@@ -61,14 +70,26 @@ def login_function():
     return dict(form=form)
 
 
+
 def create_redirect():
     redirect(URL('create.html'))
     return dict()
 
 
 def create():
-    form = SQLFORM(db.login)
-    return dict()
+    form = FORM(DIV("First Name: ", INPUT(_name="fname", _type="text", requires=IS_NOT_EMPTY())),
+                DIV("Last Name: ", INPUT(_name="lname", _type="text", requires=IS_NOT_EMPTY())),
+                DIV("Username: ", INPUT(_name="username", _type="text", requires=IS_NOT_EMPTY())),
+                DIV("Password: ", INPUT(_name="pswd", _type="password", requires=IS_NOT_EMPTY())),
+                DIV("Re-Type Password: ", INPUT(_name="repswd", _type="password", requires=IS_NOT_EMPTY())),
+                DIV("Email: ", INPUT(_name="email", _type="email", requires=IS_NOT_EMPTY())),
+                DIV("Email Password: ", INPUT(_name="empswd", _type="password", requires=IS_NOT_EMPTY())),
+                DIV("Recovery Email: ", INPUT(_name="recemail", _type="email", requires=IS_NOT_EMPTY())),
+                DIV("Security Question: ", INPUT(_name="secQues", _type="select", requires=IS_IN_SET(['What is your birthplace?',
+                                                                                                'What is your favorite color?',
+                                                                                                'Will you remember this security question?']))),
+                DIV("Security Answer: ", INPUT(_name="secAns", _type="text", requires=IS_NOT_EMPTY())))
+    return dict(form=form)
 
 
 def create_function():
@@ -97,12 +118,6 @@ def email():
     return dict()
 
 """The following methods check for input validity for login information"""
-
-
-def check_login(username, password):
-    if username == None or password == None:
-        return False
-    return True
 
 
 def check_registration(fname, lastname, username, pswd, repswd, email, empswd, recemail, secQues, secAns):
