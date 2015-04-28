@@ -7,6 +7,9 @@ Create servlet to upload pic. accept_info() to be created -->
 <html>
 <head>
     <title>Nikomen Create Account</title>
+	
+	{{response.files.append(URL('static','design.css'))}}
+    {{include 'web2py_ajax.html'}}
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="design.css">
