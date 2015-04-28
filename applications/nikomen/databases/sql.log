@@ -1,0 +1,98 @@
+timestamp: 2015-04-28T00:00:36.379459
+CREATE TABLE register(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    password CHAR(512)
+);
+success!
+timestamp: 2015-04-28T04:20:45.997391
+CREATE TABLE login(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    password CHAR(512)
+);
+success!
+timestamp: 2015-04-28T04:42:23.714172
+ALTER TABLE register ADD fname CHAR(512);
+timestamp: 2015-04-28T04:42:23.731305
+ALTER TABLE register ADD lastname CHAR(512);
+timestamp: 2015-04-28T04:42:23.732834
+ALTER TABLE register ADD empswd CHAR(512);
+timestamp: 2015-04-28T04:42:23.734288
+ALTER TABLE register ADD repswd CHAR(512);
+timestamp: 2015-04-28T04:42:23.735751
+ALTER TABLE register ADD secans CHAR(512);
+timestamp: 2015-04-28T04:42:23.737460
+ALTER TABLE register ADD secques CHAR(512);
+timestamp: 2015-04-28T04:42:23.740125
+ALTER TABLE register ADD recemail CHAR(512);
+timestamp: 2015-04-28T04:42:23.741825
+ALTER TABLE register ADD pswd CHAR(512);
+timestamp: 2015-04-28T04:42:23.743412
+ALTER TABLE register ADD email CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

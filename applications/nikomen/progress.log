@@ -30,3 +30,5 @@
 [2015-04-27 22:59:40] EDIT nikomen/views/default/index.html: 0
 [2015-04-27 23:03:30] EDIT nikomen/views/default/index.html: 0
 [2015-04-27 23:03:59] EDIT nikomen/views/default/index.html: 0
+[2015-04-27 23:55:35] DELETE nikomen/models/model.py: 0
+[2015-04-27 23:57:14] CREATE db.py: 0

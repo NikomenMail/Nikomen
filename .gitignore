@@ -2,6 +2,7 @@
 *.pyc
 *~
 *.xml
+httpserver.*
 .DC_Store
 .DS_Store
 .idea

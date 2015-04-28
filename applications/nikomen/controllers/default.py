@@ -1,3 +1,5 @@
+from input_check import Checker
+
 
 def index():
     """
@@ -46,3 +48,29 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
+
+def login_function():
+    form = SQLFORM(db.login)
+    username = request.vars.username
+    password = request.vars.password
+    print "Username:", username
+    print "Password:", password
+    if Checker.check_login(username, password):
+        print "Valid checks"
+
+    return dict(form=form)
+
+def create_redirect():
+    redirect(URL('create.html'))
+    return dict()
+
+def create():
+    print "Creating account"
+    form = SQLFORM(db.login)
+    return dict()
+
+def create_function():
+    print "Creating account for realz"
+    form = SQLFORM(db.register)
+    print request.vars
+    return dict()

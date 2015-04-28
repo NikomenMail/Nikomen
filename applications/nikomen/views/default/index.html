@@ -45,10 +45,13 @@ a:hover {color:#990099}
 					<p>Nikomen is a free open source mail client. We currently only serve gmail accounts. </p>
 					
 					<!--Go to create_functino here -->
-					<form action="create.html">
+
+                    <form action="create_redirect">
 						<br>
 						<input type="image" src="Images/signup1.png" id="signUp">
 					</form>
+
+                    <!--<a href="create.html"><img src="Images/signup1.png" title="Create Account" id="signUp" /></a>-->
 				</div>
 						
 					
@@ -77,7 +80,7 @@ a:hover {color:#990099}
 					
 					
 				</div>
-				
+				{{=BEAUTIFY(request.vars)}}
 				
             </div>
 	                
