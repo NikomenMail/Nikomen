@@ -8,6 +8,9 @@ a:hover {color:#990099}
 
 <head>
     <title>Nikomen Home</title>
+	
+	{{response.files.append(URL('static','design.css'))}}
+    	{{include 'web2py_ajax.html'}}
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="design.css">
