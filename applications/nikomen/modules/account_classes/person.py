@@ -4,7 +4,7 @@ from applications.nikomen.modules.account_classes.contact import Contact
 
 
 class Person(Contact):
-    def __init__(self, name, email, imageName=None):
+    def __init__(self, name, email, imageName="/"):
         """Constructor for the person class"""
         super(Person, self).__init__(name=name, emailaddress=email)
         self.imageName = imageName
@@ -14,9 +14,10 @@ class Person(Contact):
         print "hello"
 
     def set_image_name(self, path):
+        """Sets the image path"""
         self.imageName = path
 
-    def getImageName(self):
+    def get_image_name(self):
         """Returns the image file name"""
         return self.imageName
 

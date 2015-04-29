@@ -1,25 +1,28 @@
 from applications.nikomen.modules.account_classes.account import Account
-
+from gluon.tools import Mail
+mail = Mail()
+mail.settings.server = 'smtp.gmail.com:587'
+mail.settings.sender = 'nikomentest@gmail.com'
+mail.settings.login = 'nikomentest:nikomenTest1'
 
 def index():
+    """This controller handles the input fields for the index"""
     form = SQLFORM(db.login)
+
     if form.process().accepted:
-        print "Logging in user"
-        user_name = str(form.vars.username)
-        password = str(form.vars.password)
-        print password
-        print "Attempting Login with:", user_name, password
-        user = auth.login_bare(user_name, password)
-        print "Checking login status"
-        if user == False:
-            print "Incorrect User login"
-            redirect(URL('index.html'))
-            return dict(form=form)
-        else:
-            print "Found User!"
+        user_account = Account.login(form.vars.username, form.vars.password)
+        if user_account != None:
             redirect(URL('email.html'))
+        else:
+            redirect(URL('index.html'))
     return dict(form=form)
 
+
+def account_debug():
+    """Debug function for listing accounts"""
+    grid = SQLFORM.grid(db.auth_user)
+    print grid
+    return locals()
 
 def user():
     """
@@ -58,15 +61,8 @@ def call():
     return service()
 
 
-def login_function():
-    form = SQLFORM(db.users)
-    if form.process().accepted:
-        print "Checking Credentials"
-        IS_IN_DB(db, db.auth_user.username)
-    return dict(form=form)
-
-
 def create_redirect():
+    """Redirects to the account creation page"""
     redirect(URL('create.html'))
     return dict()
 
@@ -75,15 +71,12 @@ def create():
     """This function handles the creation of a new account"""
     form = SQLFORM(db.register)
     if form.process().accepted:
-        print "Creating account!"
-        db.auth_user.insert(
-            username=str(form.vars.username),
-            password=str(form.vars.pswd),
-            email=str(form.vars.email),
-            first_name=str(form.vars.fname),
-            last_name=str(form.vars.lastname),
-        )
-        print "Created Account"
+        user_name = str(form.vars.username)
+        password = str(form.vars.pswd)
+        email = str(form.vars.email)
+        e_pass = str(form.vars.empswd)
+        new_account = Account(user_name, password, email, e_pass)
+        new_account.save_account()
         redirect(URL('index.html'))
 
     elif form.errors:
@@ -94,29 +87,13 @@ def create():
     return dict(form=form)
 
 
-def create_function():
-    #print "Creating account for realz"
-    form = SQLFORM(db.register)
-   # print request.vars
-    check = check_registration(request.vars.fname, request.vars.lastname, request.vars.username, request.vars.pswd,
-                               request.vars.repswd, request.vars.email, request.vars.empswd, request.vars.recemail,
-                               request.vars.secQues, request.vars.secAns)
-    if check:
-        print "Registration passed!"
-        new_account = Account(request.vars.username, request.vars.pswd, request.vars.email)
-        print "Account Username:", new_account.get_username()
-        print "Account Password:", new_account.get_password()
-        print "Email address:", new_account.get_person().get_email_address()
-        redirect(URL('email.html'))
-        return dict(form=form)
-    else:
-        print "Registration rejected!"
-        redirect(URL('create.html'))
-    return dict()
-
-
 def email():
-    print db.register
+    print "Made it to email handler!"
+    mail.send(to=['jbrandt@nmt.edu'],
+          subject='Hey John',
+          # If reply_to is omitted, then mail.settings.sender is used
+          reply_to='nikomenttest@gmail.com',
+          message='This is most definitely not spam. Do not delete. This is the best feeling ever. It works*')
     return dict()
 
 
@@ -128,6 +105,7 @@ def user():
 
 
 def check_login(username, password):
+    """This method checks the login for username and password validity"""
     if username == None or password == None:
         return False
     return True

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 db = DAL('sqlite://webform.sqlite', fake_migrate_all=True)
 # This defines the input fields for logging into an existing account
 db.define_table('login',
@@ -17,13 +18,6 @@ db.define_table('register',
     Field('secQues', requires=IS_NOT_EMPTY()),
     Field('secAns', requires=IS_NOT_EMPTY()))
 
-"""db.define_table('auth_user',
-    Field('username'),
-    Field('password'),
-    Field('email'),
-    Field('first_name'),
-    Field('last_name'),
-    Field('is_admin'))"""
 
 from gluon.tools import Auth
 auth = Auth(db, hmac_key=Auth.get_or_create_key())

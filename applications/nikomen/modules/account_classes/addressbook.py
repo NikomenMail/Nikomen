@@ -2,6 +2,7 @@
 
 
 class AddressBook:
+    """This class maintains multiple addresses for an account"""
     def __init__(self, persons, maillists):
         """The constructor of an Address Book"""
         self.personList = []
