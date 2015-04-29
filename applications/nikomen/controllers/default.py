@@ -83,6 +83,7 @@ def create():
 
 
 def email():
+    """This is the controller for the email viewer"""
     sender_addr = mail.settings.sender
     recipient_addr = 'jbrand@nmt.edu'
     cc_addr = ['ineal@nmt.edu', 'smanzana@nmt.edu']
@@ -90,14 +91,18 @@ def email():
     mail_message = 'It works. It freaking works***'
     new_email = Email.write(sender_addr, recipient_addr, mail_subject, mail_message, None)
     attachment = mail.Attachment('./attach_tests/image.png', content_id="photo")
-    mail.send(
+    """mail.send(
         new_email.rAddr,
         new_email.subject,
         new_email.message,
         cc=cc_addr,
         attachments=attachment
-    )
+    )"""
     return dict()
+
+def compose():
+    """This is the controller for the compose view"""
+    # print "Made it to the compose screen!"
 
 
 def user():

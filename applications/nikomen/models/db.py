@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
 db = DAL('sqlite://webform.sqlite', fake_migrate_all=True)
+
 # This defines the input fields for logging into an existing account
 db.define_table('login',
     Field('username', requires=IS_NOT_EMPTY()),
     Field('password', requires=IS_NOT_EMPTY(), type="password"))
-#This defines the input fields for creating a new account
+
+# This defines the input fields for creating a new account
 db.define_table('register',
     Field('fname', requires=IS_NOT_EMPTY()),
     Field('lastname', requires=IS_NOT_EMPTY()),
