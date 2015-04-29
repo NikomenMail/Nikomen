@@ -24,18 +24,15 @@ class Account:
     def login(username, password):
         """This method logs a user in and returns their associated account, or None if nothing was found"""
         # Search for Account File credentials
-        print username, password
         path = "./accounts/"
         """hash input name"""
         input_name = str(hashlib.sha224(username).hexdigest())
-        print input_name
         try:
             input_file = open(path + input_name, "r")
         except IOError:
-            print "File not found!"
+            print "User does not have account!"
             return None
         """read in file"""
-        print "reading file"
         account_password = input_file.readline().rstrip('\n')
         account_name = input_file.readline().rstrip('\n')
         address = input_file.readline().rstrip('\n')
@@ -43,7 +40,7 @@ class Account:
         image_path = input_file.readline().rstrip('\n')
         # Check Password
         if password == account_password:
-            print "Passwords matched!"
+            print "User logging in"
             login_account = Account(username=account_name, password=account_password, email=address, email_password=e_password)
             login_account.get_person().set_image_name(image_path)
         else:

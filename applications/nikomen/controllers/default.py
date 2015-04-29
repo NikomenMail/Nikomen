@@ -83,12 +83,11 @@ def create():
 
 
 def email():
-    print "Made it to email handler!"
     sender_addr = mail.settings.sender
     recipient_addr = 'jbrand@nmt.edu'
-    cc_addr = ['trigition@gmail.com', 'smanzana@nmt.edu']
-    mail_subject = 'Beginning subject'
-    mail_message = 'This the message'
+    cc_addr = ['ineal@nmt.edu', 'smanzana@nmt.edu']
+    mail_subject = 'An Email Subject'
+    mail_message = 'It works. It freaking works***'
     new_email = Email.write(sender_addr, recipient_addr, mail_subject, mail_message, None)
     attachment = mail.Attachment('./attach_tests/image.png', content_id="photo")
     mail.send(

@@ -11,7 +11,6 @@ class Person(Contact):
 
     def set_name(self, new):
         """Aaaahhhh"""
-        print "hello"
 
     def set_image_name(self, path):
         """Sets the image path"""
