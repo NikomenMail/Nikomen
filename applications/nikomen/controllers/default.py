@@ -91,6 +91,7 @@ def email():
     mail_message = 'It works. It freaking works***'
     new_email = Email.write(sender_addr, recipient_addr, mail_subject, mail_message, None)
     attachment = mail.Attachment('./attach_tests/image.png', content_id="photo")
+
     """mail.send(
         new_email.rAddr,
         new_email.subject,
@@ -100,9 +101,28 @@ def email():
     )"""
     return dict()
 
+
 def compose():
-    """This is the controller for the compose view"""
-    # print "Made it to the compose screen!"
+    form = FORM(
+        INPUT(_name="Recipient", requires=IS_NOT_EMPTY()),
+        INPUT(_name="Subject", requires=IS_NOT_EMPTY()),
+        INPUT(_name="Message", requires=IS_NOT_EMPTY()),
+        INPUT(_type="submit"))
+    if form.process().accepted:
+        print form.vars
+        print "adding variables"
+        r_addr = form.vars.Recipient
+        mail_subject = form.vars.Subject
+        mail_message = form.vars.Message
+        mail.send(
+            to=r_addr,
+            subject=mail_subject,
+            message=mail_message
+        )
+        redirect(URL('compose.html'))
+    else:
+        print "User had incorrect email"
+    return dict(form=form)
 
 
 def user():

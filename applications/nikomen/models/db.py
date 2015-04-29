@@ -19,7 +19,12 @@ db.define_table('register',
     Field('recemail', requires=IS_NOT_EMPTY()),
     Field('secQues', requires=IS_NOT_EMPTY()),
     Field('secAns', requires=IS_NOT_EMPTY()))
-
+# This defines the input field for creating an email
+db.define_table('email',
+    Field('recipient', requires=IS_NOT_EMPTY()),
+    Field('subject', requires=IS_NOT_EMPTY()),
+    Field('message', requires=IS_NOT_EMPTY()),
+    Field('attachpath'))
 
 from gluon.tools import Auth
 auth = Auth(db, hmac_key=Auth.get_or_create_key())
