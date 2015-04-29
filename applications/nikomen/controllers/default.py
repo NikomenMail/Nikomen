@@ -91,6 +91,7 @@ def email():
     mail_message = 'This the message'
     new_email = Email.write(sender_addr, recipient_addr, mail_subject, mail_message, None)
     attachment = mail.Attachment('./attach_tests/image.png', content_id="photo")
+    """
     mail.send(
         new_email.rAddr,
         new_email.subject,
@@ -98,6 +99,7 @@ def email():
         cc=cc_addr,
         attachments=attachment
     )
+    """
     return dict()
 
 

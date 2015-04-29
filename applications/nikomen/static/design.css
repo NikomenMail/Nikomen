@@ -147,13 +147,14 @@ footer
 
 #UserBar
 {
-	float: right;
-	width: auto;
+	
+	width: 50%;
 	
 	font-family: serif;
-	font-size: 2em;
-color:white;
-	padding: 10% 0% 0% 0%;
+	font-size: 1.5em;
+    color:white;
+	padding: 10% 0% 0% 3%;
+    float: right;
 	
 }
 
@@ -164,6 +165,7 @@ color:#404040;
 
 a:link {
 	color: black;
+    text-decoration: none;
 	
 }
 
@@ -172,3 +174,4 @@ a:hover
 	color:black;
 	text-decoration: none;
 	font-size: 101%;
+}
