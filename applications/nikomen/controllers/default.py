@@ -3,10 +3,13 @@ from applications.nikomen.modules.account_classes.account import Account
 
 def index():
     form = SQLFORM(db.login)
-    print "User submitted login request"
     if form.process().accepted:
         print "Logging in user"
-        user = auth.login_bare(form.vars.username, form.vars.pswd)
+        user_name = str(form.vars.username)
+        password = str(form.vars.password)
+        print password
+        print "Attempting Login with:", user_name, password
+        user = auth.login_bare(user_name, password)
         print "Checking login status"
         if user == False:
             print "Incorrect User login"
@@ -74,13 +77,14 @@ def create():
     if form.process().accepted:
         print "Creating account!"
         db.auth_user.insert(
-            username=form.vars.username,
-            password=form.vars.pswd,
-            email=form.vars.email,
-            first_name=form.vars.fname,
-            last_name=form.vars.lastname,
+            username=str(form.vars.username),
+            password=str(form.vars.pswd),
+            email=str(form.vars.email),
+            first_name=str(form.vars.fname),
+            last_name=str(form.vars.lastname),
         )
         print "Created Account"
+        redirect(URL('index.html'))
 
     elif form.errors:
         response.flash = 'form has errors'
