@@ -1,9 +1,13 @@
 from applications.nikomen.modules.account_classes.account import Account
+from applications.nikomen.modules.account_classes.person import Person
+from applications.nikomen.modules.Box.Email import Email
 from gluon.tools import Mail
 mail = Mail()
 mail.settings.server = 'smtp.gmail.com:587'
 mail.settings.sender = 'nikomentest@gmail.com'
 mail.settings.login = 'nikomentest:nikomenTest1'
+user_account = None
+
 
 def index():
     """This controller handles the input fields for the index"""
@@ -12,6 +16,10 @@ def index():
     if form.process().accepted:
         user_account = Account.login(form.vars.username, form.vars.password)
         if user_account != None:
+            mail = Mail()
+            mail.settings.server = 'smtp.gmail.com:587'
+            mail.sender = user_account.get_person().get_email_address()
+            mail.settings.login = user_account.username + ":" + user_account.get_e_password()
             redirect(URL('email.html'))
         else:
             redirect(URL('index.html'))
@@ -25,20 +33,7 @@ def account_debug():
     return locals()
 
 def user():
-    """
-    exposes:
-    http://..../[app]/default/user/login
-    http://..../[app]/default/user/logout
-    http://..../[app]/default/user/register
-    http://..../[app]/default/user/profile
-    http://..../[app]/default/user/retrieve_password
-    http://..../[app]/default/user/change_password
-    http://..../[app]/default/user/manage_users (requires membership in
-    use @auth.requires_login()
-        @auth.requires_membership('group name')
-        @auth.requires_permission('read','table name',record_id)
-    to decorate functions that need access control
-    """
+    """represents a user session"""
     return dict(form=auth())
 
 
@@ -89,11 +84,20 @@ def create():
 
 def email():
     print "Made it to email handler!"
-    mail.send(to=['jbrandt@nmt.edu'],
-          subject='Hey John',
-          # If reply_to is omitted, then mail.settings.sender is used
-          reply_to='nikomenttest@gmail.com',
-          message='This is most definitely not spam. Do not delete. This is the best feeling ever. It works*')
+    sender_addr = mail.settings.sender
+    recipient_addr = 'jbrand@nmt.edu'
+    cc_addr = ['trigition@gmail.com', 'smanzana@nmt.edu']
+    mail_subject = 'Beginning subject'
+    mail_message = 'This the message'
+    new_email = Email.write(sender_addr, recipient_addr, mail_subject, mail_message, None)
+    attachment = mail.Attachment('./attach_tests/image.png', content_id="photo")
+    mail.send(
+        new_email.rAddr,
+        new_email.subject,
+        new_email.message,
+        cc=cc_addr,
+        attachments=attachment
+    )
     return dict()
 
 

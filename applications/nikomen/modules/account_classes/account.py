@@ -60,7 +60,7 @@ class Account:
         output_file.write(self.password + "\n")
         output_file.write(self.username + "\n")
         output_file.write(self.person.get_email_address() + "\n")
-        output_file.write(self.email_password() + "\n")
+        output_file.write(self.email_password + "\n")
         output_file.write(self.person.get_image_name())
         output_file.close()
         return
@@ -94,6 +94,10 @@ class Account:
     def get_password(self):
         """Probs make this method private and have it encapsulated with some authorized method"""
         return self.password
+
+    def get_e_password(self):
+        """Returns the password for the account's email service"""
+        return self.email_password
 
     def get_person(self):
         """Returns the person object associated with this account"""
