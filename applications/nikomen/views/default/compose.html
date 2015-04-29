@@ -11,6 +11,14 @@ Dyanmic title based off of username, corner menu, inbox, emails
 		{{response.files.append(URL('static','design.css'))}}
 		{{response.files.append(URL('static','css3-gmail-style.css'))}}
     	{{include 'web2py_ajax.html'}}
+		
+		<script>
+			bkLib.onDomLoaded(function()
+			{
+				new nicEditor().panelInstance(‘NicEdit’);
+				new nicEditor().panelInstance(‘NicEdit2′);
+			});
+		</script>
 
 	</head>
 	<body>
@@ -75,7 +83,9 @@ Dyanmic title based off of username, corner menu, inbox, emails
 					</thead>
                                 
 				<div id="DynamicEmail">
-					<!-- Web2Py-->
+					<textarea id=”NicEdit” cols=”80″ rows=”5″>Some Sample Text</textarea>
+					<textarea id=”NotNicEdit” cols=”80″ rows=”5″>Some Sample Text</textarea>
+					<div id=”NicEdit2″>Some Sample Text</div>
 				</div>
 			</div>	
 		</div>	
