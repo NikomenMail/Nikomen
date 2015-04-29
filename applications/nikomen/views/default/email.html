@@ -17,10 +17,10 @@ Dyanmic title based off of username, corner menu, inbox, emails
 		
 		<!-- Logo Placement -->
 		<div id="LogoSpan" > 
-			<img src="{{=URL(r=request,c='static',f='nikomen_logosmall.jpg')}}" alt="A Greek Lord Running to Deliver Your Message" style="width:65%;height:125px; margin:3% 0% 0% 0%">
+			<img src="{{=URL(r=request,c='static',f='nikomen_logosmall.jpg')}}" alt="A Greek Lord Running to Deliver Your Message" style="width:48%;height:125px; margin:3% 0% 0% 0%">
 			
 			<!-- Corner Menu, do in Web2Py -->
-			<div id="UserBar">	
+			<div id="UserBar" style="width:45%; float:right">	
 					<a href="" >  Contact Us  </a>
 					|
 					<a href="" >  Home  </a>
@@ -48,8 +48,9 @@ Dyanmic title based off of username, corner menu, inbox, emails
                                         
 						<br><br><br>
 						<a href="#">
-							<center><img src='./Images/addressbook.png' style="width:100px; height:120px"></center>
+							<center><img src="{{=URL(r=request,c='static',f='addressbook.png')}}" style="width:100px; height:120px"></center>
 						</a>
+					
 				</div>	
 			</div>
 			
